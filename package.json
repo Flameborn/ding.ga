@@ -1,0 +1,23 @@
+{
+  "name": "chat-anarchy",
+  "version": "1.0.0",
+  "description": "Multi-user, multi-room chat using socket.io.",
+  "main": "server.js",
+  "dependencies": {
+    "socket.io": "^1.2.1",
+    "moniker": "^0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "socket-io",
+    "socket.io",
+    "chat",
+    "multi-room",
+    "multi-user"
+  ],
+  "author": "Benjamin Barber",
+  "license": "ISC"
+}

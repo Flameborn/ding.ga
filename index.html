@@ -1,0 +1,40 @@
+<!doctype html>
+<title>/</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    * {
+        font: 18px monospace;
+    }
+</style>
+<input autofocus style="width:75%">
+<script src=/socket.io/socket.io.js></script>
+<script>
+    document.title = location.pathname;
+    var socket = io()
+        .on('connect', function() {
+            socket.emit('join', location.pathname)
+        })
+        .on('joined', function(user) {
+            log(user + ' joined.');
+        })
+        .on('message', function(data) {
+            log(data.u + ': ' + data.m);
+        })
+        .on('left', function(user) {
+            log(user + ' left.');
+        });
+
+    var input = document.getElementsByTagName('input')[0];
+    input.onchange = function() {
+        socket.send(this.value);
+        this.value = '';
+    };
+
+    function log(m) {
+        var p = document.createElement('p');
+        p.appendChild(document.createTextNode(m));
+        p.title = Date();
+        document.body.insertBefore(p, input);
+        p.scrollIntoView();
+    }
+</script>
