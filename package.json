@@ -1,11 +1,11 @@
 {
   "name": "chat-anarchy",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Multi-user, multi-room chat using socket.io.",
+  "repository": "https://github.com/barberboy/chat-anarchy",
   "main": "server.js",
   "dependencies": {
-    "socket.io": "^1.2.1",
-    "moniker": "^0.1.2"
+    "socket.io": "^1.2.1"
   },
   "devDependencies": {},
   "scripts": {
@@ -15,6 +15,7 @@
     "socket-io",
     "socket.io",
     "chat",
+    "anarchy",
     "multi-room",
     "multi-user"
   ],

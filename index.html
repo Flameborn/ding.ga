@@ -7,21 +7,20 @@
     }
 </style>
 <input autofocus style="width:75%">
-<script src=/socket.io/socket.io.js></script>
+<script src="/socket.io/socket.io.js"></script>
 <script>
-    document.title = location.pathname;
     var socket = io()
         .on('connect', function() {
-            socket.emit('join', location.pathname)
+            document.title = location.pathname;
+            socket.emit('join', location.pathname);
         })
-        .on('joined', function(user) {
-            log(user + ' joined.');
-        })
+        .on('announce', log)
+        .on('inject', inject)
         .on('message', function(data) {
             log(data.u + ': ' + data.m);
         })
-        .on('left', function(user) {
-            log(user + ' left.');
+        .on('count', function(count) {
+            document.title = '(' + count + ')' + location.pathname;
         });
 
     var input = document.getElementsByTagName('input')[0];
@@ -30,6 +29,13 @@
         this.value = '';
     };
 
+    function inject(html) {
+        var div = document.createElement('div');
+        div.innerHTML = html;
+        div.title = Date();
+        document.body.insertBefore(div, input);
+        div.scrollIntoView();
+    }
     function log(m) {
         var p = document.createElement('p');
         p.appendChild(document.createTextNode(m));
