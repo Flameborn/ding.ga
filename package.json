@@ -5,6 +5,9 @@
   "repository": "https://github.com/barberboy/chat-anarchy",
   "main": "server.js",
   "dependencies": {
+    "chat-anarchy-mediabot": "git://github.com/barberboy/chat-anarchy-mediabot",
+    "chat-anarchy-server": "git://github.com/barberboy/chat-anarchy-server",
+    "chat-anarchy-whobot": "git://github.com/barberboy/chat-anarchy-whobot",
     "socket.io": "^1.2.1"
   },
   "devDependencies": {},
