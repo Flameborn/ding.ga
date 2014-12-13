@@ -1,13 +1,13 @@
 {
   "name": "chat-anarchy",
   "version": "2.0.0",
-  "description": "Multi-user, multi-room chat using socket.io.",
+  "description": "Multi-user, multi-room chat using socket.io and chat-anarchy-server.",
   "repository": "https://github.com/barberboy/chat-anarchy",
   "main": "server.js",
   "dependencies": {
-    "chat-anarchy-mediabot": "git://github.com/barberboy/chat-anarchy-mediabot",
-    "chat-anarchy-server": "git://github.com/barberboy/chat-anarchy-server",
-    "chat-anarchy-whobot": "git://github.com/barberboy/chat-anarchy-whobot",
+    "chat-anarchy-mediabot": "1.0.0",
+    "chat-anarchy-server": "1.0.0",
+    "chat-anarchy-whobot": "1.0.0",
     "socket.io": "^1.2.1"
   },
   "devDependencies": {},
