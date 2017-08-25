@@ -10,7 +10,8 @@
     "moniker": "^0.1.2",
     "set": "^1.1.1",
     "socket.io": "^1.2.1",
-    "sono": "^2.1.2"
+    "sono": "^2.1.2",
+    "webremix": "^3.0.0"
   },
   "devDependencies": {},
   "scripts": {
