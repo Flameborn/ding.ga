@@ -1,0 +1,59 @@
+{
+  "_from": "chat-anarchy-mediabot@1.0.0",
+  "_id": "chat-anarchy-mediabot@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-KAPON5OYXwxAYueRyTpCCWY/vTk=",
+  "_location": "/chat-anarchy-mediabot",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "chat-anarchy-mediabot@1.0.0",
+    "name": "chat-anarchy-mediabot",
+    "escapedName": "chat-anarchy-mediabot",
+    "rawSpec": "1.0.0",
+    "saveSpec": null,
+    "fetchSpec": "1.0.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/chat-anarchy-mediabot/-/chat-anarchy-mediabot-1.0.0.tgz",
+  "_shasum": "2803ce3793985f0c4062e791c93a4209663fbd39",
+  "_spec": "chat-anarchy-mediabot@1.0.0",
+  "_where": "/Users/Rob/repo/chat-anarchy",
+  "author": {
+    "name": "Benjamin Barber"
+  },
+  "bugs": {
+    "url": "https://github.com/barberboy/chat-anarchy-mediabot/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "webremix": "^1.0.2"
+  },
+  "deprecated": false,
+  "description": "A chat-anarchy bot to embed rich media.",
+  "devDependencies": {},
+  "homepage": "https://github.com/barberboy/chat-anarchy-mediabot",
+  "keywords": [
+    "socket-io",
+    "socket.io",
+    "chat",
+    "anarchy",
+    "chat-anarchy",
+    "media",
+    "bot"
+  ],
+  "license": "ISC",
+  "main": "mediabot.js",
+  "name": "chat-anarchy-mediabot",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barberboy/chat-anarchy-mediabot.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}

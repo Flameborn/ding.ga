@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+<title>Ding!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<style>
+    msg {
+        font: 14px monospace;
+    }
+	#hints {
+	  display: inline;
+	  style-type: none;
+	  padding-left: 20px;
+	}
+	</style>
+
+<script>
+  function toggle(id, id2) {
+    var n = document.getElementById(id);
+	if (n.style.display != 'none') 
+	  {
+	  n.style.display = 'none';
+      document.getElementById(id2).setAttribute('aria-expanded', 'false');
+  }
+  else
+  {
+  n.style.display = '';
+  document.getElementById(id2).setAttribute('aria-expanded', 'true');
+	  }
+  }
+</script>
+</head>
+<h1>Hello!</h1>
+				<p>Ding! is an anonymous, real time, interactive, public chat on any topic (just change the URL of the page to create a new channel).</p>
+				<p> No history, no login, just talk! It cannot be more simple!</p>
+				<hr>
+<a aria-expanded="false" role="button"" id="TLink1" href="#" onclick="toggle('hints', 'TLink1')">Hints</a>
+<div id="hints" style="display:none">
+<p>Available commands:</p>
+<p><ul>
+	<li><b>me text</b>, to emote, e.g. <b>me is hungry</b></li>
+	<li>Post a link and it will show up in the <i>Posted Links</i> section.</li>
+	<li>You can change your nick by typing <i>nick newNickName</i></li>
+</ul></p>
+					<p>By default, you are in the lobby, but here are a few other channels for you to try:</p>
+<ul>
+<li><a href="/general">General</a></li>
+<li><a href="/tech">Tech</a></li>
+<li><a href="/gaming">Gaming</a></li>
+<li><a href="/books">Books</a></li>
+<li><a href="/movies">Movies</a></li>
+<li><a href="/music">Music</a></li>
+<li><a href="/education">Education</a></li>
+<li><a href="/vampires">Vampires</a></li>
+<li><a href="/fashion">Fashion</a></li>
+<li><a href="/ding">Ding</a></li>
+</ul>
+				<p> Here are some generated channels for you, if you want to chat privately:</p>
+				<div id="PrivateLinks"></div></div>
+<h1>Make a Ding! We're here to deliver.</h1>
+<p>Because everyone's Ding needs to be heard. Here's what you need to pay attention to, when Dinging:</p>
+<ol>
+<li>No language limits.</li>
+<li>Do not give out sensitive information, unless you are absolutely sure that the person you are talking to can be trusted. This includes passwords and credit card numbers.</li>
+<li>Do not do anything that you wouldn't want others to do to you.</li>
+</ol>
+<p>If you would like to help us out with the server costs, you can <a href="https://www.paypal.me/flameborn/4eur">Pay for a month,</a> or <a href="https://www.paypal.me/flameborn/0eur">Pay any amount you wish</a> and make everyone smile! This is optional, but it is greatly appreciated.</p> 
+<p>We are NOT responsible for your Dings!</p>
+<p>Make us proud and have fun!</p>
+
+<h1>History</h1>
+<div id="history" aria-role="log" aria-live="polite"></div>
+<input autofocus style="width:75%">
+<h1>Posted Links</h1>
+<div id="links"></div>
+<a href="http://github.com/Flameborn/ding.ga">Get the source code on Github</a>
+
+<div id="mylog"></div>
+<script src="log.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+	<script src="/sono.min.js"></script>
+<script src="/audio.js"></script>
+<script>
+var ctitle = " - Ding!"
+	var minutes=0;
+	var username;
+	var connected=false;
+    var socket = io()
+        .on('connect', function() {
+            document.title = location.pathname+ctitle;
+			connected=true;
+            socket.emit('join', location.pathname);
+			aUsrLogin.stop();
+			aUsrLogin.play();
+        })
+        .on('disconnect', function() {
+			connected=false;
+			log({u: "Info", m: "Disconnected."});
+			aUsrLogout.stop();
+			aUsrLogout.play();
+})
+        .on('announce', log)
+		.on('join', join)
+				.on('leave', leave)
+		.on('welcome', welcome)
+		.on('newnick', newnick)
+        .on('inject', inject)
+        .on('message', function(data) {
+			if (username != data.u) {
+				aMsgRec.stop();
+				aMsgRec.play();
+			}
+		    if(!window.document.hasFocus() && Notification.permission=="granted"){
+			    var title="New message from "+data.u;
+			    var options={
+			    body:data.m
+		     }
+			 var nfm=new Notification(title,options);
+			}
+            log(data);
+        })
+        .on('count', function(count) {
+            document.title = '(' + count + ') ' + location.pathname+ctitle;
+        });
+
+
+    var input = document.getElementsByTagName('input')[0];
+    input.onchange = function() {
+		if (!connected) {
+			log({u: "Info", m: "You are not connected."});
+        this.value = '';
+			return;
+			}
+		this.value=this.value.trim();
+		if (this.value==="")
+			return;
+        socket.send(this.value);
+        this.value = '';
+		aMsgSend.stop();
+		aMsgSend.play();
+    };
+
+	function newnick(data) {
+		if (username==data.o) {
+			username=data.n;
+			log({u: "Info", m: "You are now known as "+data.n+"."})
+		} else {
+			log({u: "Info", m: data.o+" is now known as "+data.n+"."})
+			
+		}
+	}
+
+	function welcome(data) {
+		username=data.u;
+	}
+
+	function join(data) {
+		aUsrLogin.stop()
+			aUsrLogin.play()
+		log(data)
+	}
+
+	function leave(data) {
+		aUsrLogout.stop()
+			aUsrLogout.play()
+		log(data)
+	}
+
+	    function inject(html) {
+        var div = document.createElement('div');
+        div.innerHTML = html;
+document.getElementById('links').appendChild(div, input);
+        div.scrollIntoView();
+    }
+    function log(data) {
+var historydiv = document.getElementById("history");
+
+var hu = document.createElement('h3');
+hu.innerHTML=data.u.bold();
+
+        var p = document.createElement('p');
+p.appendChild(document.createTextNode(data.m));
+p.className="msg";
+		var d = new Date();
+		if (d.getMinutes() > minutes) {
+			minutes=d.getMinutes();
+	        var h2 = document.createElement('h2');
+h2.appendChild(document.createTextNode((d.getHours()<10?'0':'')+d.getHours()+":"+(d.getMinutes()<10?'0':'')+d.getMinutes()));
+			historydiv.appendChild(h2);
+		}
+		historydiv.appendChild(hu);
+		historydiv.appendChild(p);
+        p.scrollIntoView();
+    }
+		if(window.Notification && Notification.permission!=="granted"){
+    Notification.requestPermission(function(status){
+    if(Notification.permission!==status){
+    Notification.permission=status;
+    }
+    })
+}
+
+//add Private Links
+var PrivLinks=document.getElementById("PrivateLinks");
+var PrivID=generate(10)
+var Link1=document.createElement('a');
+Link1.href="/"+PrivID;
+Link1.innerHTML=PrivID;
+PrivID=generate(10);
+var Link2=document.createElement('a');
+Link2.href="/"+PrivID;
+Link2.innerHTML=PrivID;
+PrivLinks.appendChild(Link1);
+PrivLinks.appendChild(Link2);
+
+function generate(length) {
+var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+result=""
+for (var i = length; i > 0; --i)
+result += chars[Math.round(Math.random() * (chars.length - 1))]
+return result
+}
+</script>

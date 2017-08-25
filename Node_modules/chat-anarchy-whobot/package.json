@@ -1,0 +1,59 @@
+{
+  "_from": "chat-anarchy-whobot@1.0.0",
+  "_id": "chat-anarchy-whobot@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-WM/kcBB/DZifP4F8IZr97nmR+ZY=",
+  "_location": "/chat-anarchy-whobot",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "chat-anarchy-whobot@1.0.0",
+    "name": "chat-anarchy-whobot",
+    "escapedName": "chat-anarchy-whobot",
+    "rawSpec": "1.0.0",
+    "saveSpec": null,
+    "fetchSpec": "1.0.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/chat-anarchy-whobot/-/chat-anarchy-whobot-1.0.0.tgz",
+  "_shasum": "58cfe470107f0d989f3f817c219afdee7991f996",
+  "_spec": "chat-anarchy-whobot@1.0.0",
+  "_where": "/Users/Rob/repo/chat-anarchy",
+  "author": {
+    "name": "Benjamin Barber"
+  },
+  "bugs": {
+    "url": "https://github.com/barberboy/chat-anarchy-timebot/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "set": "^1.1.1"
+  },
+  "deprecated": false,
+  "description": "A chat anarchy bot to announce who is in the room.",
+  "devDependencies": {},
+  "homepage": "https://github.com/barberboy/chat-anarchy-timebot",
+  "keywords": [
+    "socket-io",
+    "socket.io",
+    "chat",
+    "anarchy",
+    "chat-anarchy",
+    "who",
+    "bot"
+  ],
+  "license": "ISC",
+  "main": "whobot.js",
+  "name": "chat-anarchy-whobot",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chat-anarchy/whobot.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}

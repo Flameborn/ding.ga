@@ -1,0 +1,58 @@
+{
+  "_from": "chat-anarchy-server@1.0.0",
+  "_id": "chat-anarchy-server@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-eIt2dsMRXmTL8BSo8JP5x42qPVg=",
+  "_location": "/chat-anarchy-server",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "chat-anarchy-server@1.0.0",
+    "name": "chat-anarchy-server",
+    "escapedName": "chat-anarchy-server",
+    "rawSpec": "1.0.0",
+    "saveSpec": null,
+    "fetchSpec": "1.0.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/chat-anarchy-server/-/chat-anarchy-server-1.0.0.tgz",
+  "_shasum": "788b7676c3115e64cbf014a8f093f9c78daa3d58",
+  "_spec": "chat-anarchy-server@1.0.0",
+  "_where": "/Users/Rob/repo/chat-anarchy",
+  "author": {
+    "name": "Benjamin Barber"
+  },
+  "bugs": {
+    "url": "https://github.com/chat-anarchy/server"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "moniker": "^0.1.2"
+  },
+  "deprecated": false,
+  "description": "The core chat anarchy webserver.",
+  "devDependencies": {},
+  "homepage": "https://github.com/chat-anarchy/server",
+  "keywords": [
+    "socket-io",
+    "socket.io",
+    "chat",
+    "anarchy",
+    "chat-anarchy"
+  ],
+  "license": "ISC",
+  "main": "server.js",
+  "name": "chat-anarchy-server",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chat-anarchy/server.git"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
