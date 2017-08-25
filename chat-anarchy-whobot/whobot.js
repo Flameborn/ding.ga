@@ -41,7 +41,7 @@ function contains(col,item) {
 				switch (true) {
 				case /^\/who/.test(message):
 					var roster = rooms[socket.room];
-                    socket.nsp.in(socket.room).emit('announce',
+                    socket.emit('announce',
 { u: "Info", m: "Members: "+roster.get().join(', ')});
 break;
 case /^\/nick\s.*/.test(message):
