@@ -1,6 +1,6 @@
 var set = require('set');
 var util = require('util');
-
+var escape = require ( 'escape-html' ) ; 
 
 module.exports = function(options) {
     var rooms = {};
@@ -45,6 +45,7 @@ roster.remove(socket.user);
 if (roster.get().join(', ').toLowerCase().indexOf(nnick.toLowerCase())>=0) {
 	nnick+="-"+generate(5);
 }
+nnick=escape(nnick);
 roster.add(nnick);
 socket.nsp.in(socket.room).emit('newnick',
 	{ n: nnick, o: socket.user});
