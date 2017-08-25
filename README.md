@@ -56,6 +56,7 @@ In short, a lot. See for yourself!
 * Emotes. Type _/me is hungry_
 * Basic flood control, with temporary ip bans.
 * The user is properly notified when the client is disconnected.
+* The media bot now automagically includes an html5 player for supported filetypes. This is quite generic, it is up to your browser to play them, if they can.
 
 # Special Thanks
 

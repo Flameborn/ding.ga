@@ -12,7 +12,11 @@ module.exports = function(options) {
                     remix.generate(message, function(err, resp) {
                         if (!err && resp) {
                             //console.log("%s: %s %s", socket.user, message, socket.room);
-                            socket.nsp.to(socket.room).emit('inject', resp);
+socket.nsp.to(socket.room).emit('inject', resp);
+if (/^https?\:\/\/.*\.(mp3|ogg|wav|m4a|flac|opus|aac)/.test(message)) {
+	message='<audio src="'+message+'" controls></audio>';
+socket.nsp.to(socket.room).emit('inject', message);
+}
                         }
                     });
                 }
