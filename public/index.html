@@ -111,7 +111,7 @@ var ctitle = " - Ding!"
 				aMsgRec.stop();
 				aMsgRec.play();
 			}
-		    if(!window.document.hasFocus() && Notification.permission=="granted"){
+		    if(!window.document.hasFocus() && window.Notification && Notification.permission=="granted"){
 			    var title="New message from "+data.u;
 			    var options={
 			    body:data.m
