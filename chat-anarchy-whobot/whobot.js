@@ -38,7 +38,7 @@ return result
 break;
 case /^\/nick\s.*/.test(message):
 	var roster = rooms[socket.room];
-	var nnick=message.slice(message.indexOf(" ")).replace(/\b\w/g, l => l.toUpperCase());
+	var nnick=message.slice(message.indexOf(" ")).replace(/\b\w/g, l => l.toUpperCase()).trim();
 if (nnick==socket.user)
 	return;
 roster.remove(socket.user);
