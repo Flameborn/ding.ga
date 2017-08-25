@@ -126,20 +126,23 @@ var ctitle = " - Ding!"
 
 
     var input = document.getElementsByTagName('input')[0];
-    input.onchange = function() {
-		if (!connected) {
-			log({u: "Info", m: "You are not connected."});
-        this.value = '';
-			return;
-			}
-		this.value=this.value.trim();
-		if (this.value==="")
-			return;
-        socket.send(this.value);
-        this.value = '';
-		aMsgSend.stop();
-		aMsgSend.play();
-    };
+
+input.onkeydown = function (e) {
+	 if ( e.keyCode === 13 || e.keyCode === 10) {
+ 		if (!connected) {
+ 			log({u: "Info", m: "You are not connected."});
+         this.value = '';
+ 			return;
+ 			}
+ 		this.value=this.value.trim();
+ 		if (this.value==="")
+ 			return;
+         socket.send(this.value);
+         this.value = '';
+ 		aMsgSend.stop();
+ 		aMsgSend.play();
+}
+};
 
 	function newnick(data) {
 		if (username==data.o) {
