@@ -74,6 +74,7 @@ ipList[socket.request.connection.remoteAddress].banned=true;
 						socket.floodTimer=curTime;
 					var mIndex=message.indexOf(" ");
 					if (mIndex==-1) {
+if (!/^\/.*/.test(message))
 socket.nsp.in(socket.room).emit('message', {
 	                        u: socket.user,
 	                        m: message
@@ -85,12 +86,13 @@ return;
 message="*"+socket.user+" "+message.slice(mIndex)+"*";
 break;
 }
+if (!/^\/.*/.test(message))
 						socket.nsp.in(socket.room).emit('message', {
 						                        u: socket.user,
 						                        m: message
-						                    });
-                }
-            })
+});
+}
+})
             .on('disconnect', function() {
                 //console.log("%s left %s", socket.user, socket.room);
                 if (socket.room) {
