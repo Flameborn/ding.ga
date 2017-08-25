@@ -14,7 +14,7 @@ module.exports = function(options) {
                             //console.log("%s: %s %s", socket.user, message, socket.room);
 socket.nsp.to(socket.room).emit('inject', resp);
 if (/^https?\:\/\/.*\.(mp3|ogg|wav|m4a|flac|opus|aac)/.test(message)) {
-	message='<audio src="'+encodeURIComponent(message)+'" controls></audio>';
+	message='<audio src="'+encodeURI(message)+'" controls></audio>';
 socket.nsp.to(socket.room).emit('inject', message);
 }
                         }
