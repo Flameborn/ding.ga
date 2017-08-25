@@ -81,7 +81,7 @@ socket.nsp.in(socket.room).emit('message', {
 return;
 					}
 					switch (message.slice(0,mIndex)) {
-						case 'me':
+						case '/me':
 message="*"+socket.user+" "+message.slice(mIndex)+"*";
 break;
 }

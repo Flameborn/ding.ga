@@ -1,6 +1,6 @@
 var set = require('set');
 var util = require('util');
-//var contains = require ( 'lodash/fp/contains' );
+
 
 module.exports = function(options) {
     var rooms = {};
@@ -31,15 +31,12 @@ return result
                 if (!message || !socket.room || !rooms[socket.room]) return;
 
 				switch (true) {
-	case /who/.test(message):
-case /who?/.test(message):
-case /who's here?/.test(message):
-case /who is here?/.test(message):
-var roster = rooms[socket.room];
+				case /^\/who/.test(message):
+					var roster = rooms[socket.room];
                     socket.nsp.in(socket.room).emit('announce',
 { u: "Info", m: "Members: "+roster.get().join(', ')});
 break;
-case /nick\s.*/.test(message):
+case /^\/nick\s.*/.test(message):
 	var roster = rooms[socket.room];
 	var nnick=message.slice(message.indexOf(" ")).replace(/\b\w/g, l => l.toUpperCase());
 if (nnick==socket.user)
