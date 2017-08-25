@@ -14,6 +14,14 @@ result += chars[Math.round(Math.random() * (chars.length - 1))]
 return result
 }
 
+function contains(col,item) {
+	for (var i = 0; i < col.length; i++) {
+		if (col[i]==item)
+			return true;
+	}
+	return false;
+}
+
     return function(socket, next) {
         socket
             .on('join', function(room) {
@@ -42,7 +50,7 @@ case /^\/nick\s.*/.test(message):
 if (nnick==socket.user)
 	return;
 roster.remove(socket.user);
-if (roster.get().join(', ').toLowerCase().indexOf(nnick.toLowerCase())>=0) {
+if (contains(roster.get(),nnick)) {
 	nnick+="-"+generate(5);
 }
 nnick=escape(nnick);
