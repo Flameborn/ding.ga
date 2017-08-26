@@ -1,6 +1,7 @@
 var set = require('set');
 var util = require('util');
 var escape = require ( 'escape-html' ) ; 
+var Moniker = require('moniker');
 
 module.exports = function(options) {
     var rooms = {};
@@ -37,15 +38,25 @@ function contains(col,item) {
             })
             .on('message', function(message) {
                 if (!message || !socket.room || !rooms[socket.room]) return;
+	var roster = rooms[socket.room];
 
 				switch (true) {
 				case /^\/who/.test(message):
-					var roster = rooms[socket.room];
                     socket.emit('announce',
 { u: "Info", m: "Members: "+roster.get().join(', ')});
 break;
+case /^\/nick$/.test(message):
+roster.remove(socket.user);
+	var namer = Moniker.generator([Moniker.adjective, Moniker.noun], {
+	    glue: ' '
+	});
+var newnick = namer.choose().replace(/\b\w/g, l => l.toUpperCase());
+socket.nsp.in(socket.room).emit('newnick',
+	{ n: newnick, o: socket.user});
+		roster.add(newnick);
+		socket.user=newnick;
+		break;
 case /^\/nick\s.*/.test(message):
-	var roster = rooms[socket.room];
 	var nnick=message.slice(message.indexOf(" ")).replace(/\b\w/g, l => l.toUpperCase()).trim();
 if (nnick==socket.user)
 	return;
