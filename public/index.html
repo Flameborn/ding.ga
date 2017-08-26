@@ -188,6 +188,7 @@ hu.innerHTML=data.u.bold();
 if (data.link) {
 var lnk=document.createElement('a');
 lnk.href=data.m;
+lnk.target="_blank";
 lnk.innerHTML=data.m;
 p.appendChild(lnk);
 } else {
