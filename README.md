@@ -57,6 +57,7 @@ In short, a lot. See for yourself!
 * Basic flood control, with temporary ip bans.
 * The user is properly notified when the client is disconnected.
 * The media bot now automagically includes an html5 player for supported filetypes. This is quite generic, it is up to your browser to play them, if they can.
+* A magical 8-ball, type __/8 question_ to use it.
 
 # Special Thanks
 
