@@ -154,6 +154,7 @@ input.onkeydown = function (e) {
 		}
 	}
 
+
 	function welcome(data) {
 		username=data.u;
 	}
@@ -183,8 +184,17 @@ var hu = document.createElement('h3');
 hu.innerHTML=data.u.bold();
 
         var p = document.createElement('p');
+
+if (data.link) {
+var lnk=document.createElement('a');
+lnk.href=data.m;
+lnk.innerHTML=data.m;
+p.appendChild(lnk);
+} else {
 p.appendChild(document.createTextNode(data.m));
 p.className="msg";
+}
+
 		var d = new Date();
 		if (d.getMinutes() > minutes) {
 			minutes=d.getMinutes();

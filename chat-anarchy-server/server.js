@@ -74,7 +74,17 @@ ipList[socket.request.connection.remoteAddress].banned=true;
 						socket.floodTimer=curTime;
 					var mIndex=message.indexOf(" ");
 					if (mIndex==-1) {
-if (!/^\/.*/.test(message))
+if (!/^\/.*/.test(message)) {
+	if (/^https?\:\/\//.test(message)) {
+		socket.nsp.in(socket.room).emit('message', {
+u: socket.user,
+m: message.replace(/<>"/,''),
+link: true
+		});		
+		return;
+	}
+		
+}
 socket.nsp.in(socket.room).emit('message', {
 	                        u: socket.user,
 	                        m: message
