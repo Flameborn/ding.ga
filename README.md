@@ -58,6 +58,7 @@ In short, a lot. See for yourself!
 * The user is properly notified when the client is disconnected.
 * The media bot now automagically includes an html5 player for supported filetypes. This is quite generic, it is up to your browser to play them, if they can.
 * A magical 8-ball, type __/8 question_ to use it.
+* Virtual coins to toss, in case you are in front of a big decision. Type _/coin_ to toss.
 
 # Special Thanks
 
