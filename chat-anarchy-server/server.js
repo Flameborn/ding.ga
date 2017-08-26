@@ -81,9 +81,8 @@ u: socket.user,
 m: message.replace(/<>"/,''),
 link: true
 		});		
-		return;
 	}
-		
+				return;
 }
 socket.nsp.in(socket.room).emit('message', {
 	                        u: socket.user,
