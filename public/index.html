@@ -174,7 +174,7 @@ input.onkeydown = function (e) {
 	    function inject(html) {
         var div = document.createElement('div');
         div.innerHTML = html;
-document.getElementById('links').appendChild(div, input);
+document.getElementById('links').insertBefore(div,document.getElementById('links').firstChild);
         div.scrollIntoView();
     }
     function log(data) {
