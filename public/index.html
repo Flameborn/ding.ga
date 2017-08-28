@@ -42,6 +42,7 @@
 	<li><i>/me text</i>, to emote, e.g. <b>me is hungry</b></li>
 	<li><i>/8 question</i>, to use the magic 8-ball.</li>
 <li>We have virtual coins for you to toss, in case you are in front of a big decision. Type <i>/coin</i> to toss.</li>
+<li><i>/dic word</i> to use the WordNet dictionary (English only).</li>
 	<li>Post a link and it will show up in the <i>Posted Links</i> section.</li>
 	<li>You can change your nick by typing <i>/nick newNickName</i> Do not specify a new nickname to generate a new, random nick.</li>
 </ul></p>
@@ -156,7 +157,6 @@ input.onkeydown = function (e) {
 		}
 	}
 
-
 	function welcome(data) {
 		username=data.u;
 	}
@@ -179,7 +179,8 @@ input.onkeydown = function (e) {
 document.getElementById('links').insertBefore(div,document.getElementById('links').firstChild);
         div.scrollIntoView();
     }
-    function log(data) {
+
+function log(data) {
 var historydiv = document.getElementById("history");
 
 var hu = document.createElement('h3');
@@ -193,6 +194,10 @@ lnk.href=data.m;
 lnk.target="_blank";
 lnk.innerHTML=data.m;
 p.appendChild(lnk);
+} else if (data.dictionary) {
+document.createElement('div');
+p.innerHTML=data.m.replace('\n','<br />')
+p.className="msg";
 } else {
 p.appendChild(document.createTextNode(data.m));
 p.className="msg";

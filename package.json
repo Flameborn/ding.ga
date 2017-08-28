@@ -5,13 +5,16 @@
   "repository": "https://github.com/barberboy/chat-anarchy",
   "main": "server.js",
   "dependencies": {
+    "async": "^2.5.0",
     "escape-html": "^1.0.3",
     "file-exists": "^4.0.0",
     "moniker": "^0.1.2",
+    "node-wordnet": "^0.1.12",
     "set": "^1.1.1",
     "socket.io": "^1.2.1",
     "sono": "^2.1.2",
-    "webremix": "^3.0.0"
+    "webremix": "^3.0.0",
+    "wndb-with-exceptions": "^3.0.2"
   },
   "devDependencies": {},
   "scripts": {
