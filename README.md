@@ -59,6 +59,8 @@ In short, a lot. See for yourself!
 * The media bot now automagically includes an html5 player for supported filetypes. This is quite generic, it is up to your browser to play them, if they can.
 * A magical 8-ball, type __/8 question_ to use it.
 * Virtual coins to toss, in case you are in front of a big decision. Type _/coin_ to toss.
+* You can use the English WordNet dictionary to look up words. Type _/dic word_ to do so.
+* You can roll dice with _/dice NumberOfDice(d)NumberOfSides[+/-Modifier[a/d]]_, where the bracketed part is optional. The modifier adds or subtracts from the total value, while _a_ or _d_ sorts the rolled dice in ascending or in descending order respectively. _/dice_ is an alias for _/dice 1d6_. For example: _/dice 2d6+100d_ will roll 2 six-sided die and sort the result in descending order, then add 100 to the total sum.
 
 # Special Thanks
 
