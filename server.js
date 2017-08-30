@@ -18,5 +18,5 @@ require('socket.io')(server)
     .use(require('./ding-dic')())
     .use(require('./ding-dice')());
 	server.listen(process.env.PORT || 1844, process.env.IP || '127.0.0.1', function() {
-    console.log("Chat anarchy is listening on port %d", server.address().port);
+    console.log("Ding! is listening on port %d", server.address().port);
 });
