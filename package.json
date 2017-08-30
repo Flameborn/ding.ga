@@ -10,6 +10,7 @@
     "file-exists": "^4.0.0",
     "moniker": "^0.1.2",
     "node-wordnet": "^0.1.12",
+    "pug": "^2.0.0-rc.3",
     "set": "^1.1.1",
     "socket.io": "^1.2.1",
     "sono": "^2.1.2",

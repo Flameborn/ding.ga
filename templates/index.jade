@@ -1,0 +1,126 @@
+doctype html
+html
+  head
+    title Ding!
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(charset='UTF-8')
+    style.
+      msg {
+      font: 14px monospace;
+      }
+      #hints {
+      display: inline;
+      style-type: none;
+      padding-left: 20px;
+      }
+    script.
+      function toggle(id, id2) {
+      var n = document.getElementById(id);
+      if (n.style.display != 'none')
+      {
+      n.style.display = 'none';
+      document.getElementById(id2).setAttribute('aria-expanded', 'false');
+      }
+      else
+      {
+      n.style.display = '';
+      document.getElementById(id2).setAttribute('aria-expanded', 'true');
+      }
+      }
+  body
+    h1 Hello!
+    p Ding! is an anonymous, real time, interactive, public chat on any topic (just change the URL of the page to create a new channel).
+    p No history, no login, just talk! It cannot be more simple!
+    hr
+    a#TLink1(aria-expanded='false', role='button', href='#', onclick="toggle('hints', 'TLink1')") Hints
+    #hints(style='display:none')
+      p Available commands:
+      p
+        ul
+          li
+            i /me text
+            | , to emote, e.g. 
+            i me is hungry
+          li
+            i /8 question
+            | , to use the magic 8-ball.
+          li
+            | We have virtual coins for you to toss, in case you are in front of a big decision. Type 
+            i /coin
+            |  to toss.
+          li
+            i /dic word
+            |  to use the WordNet dictionary (English only).
+          li
+            | You can roll dice with 
+            i /dice NumberOfDice(d)NumberOfSides[+/-Modifier[a/d]]
+            | , where the bracketed part is optional. The modifier adds or subtracts from the total value, while 
+            i a
+            |  or 
+            i d
+            |  sorts the rolled dice in ascending or in descending order respectively. 
+            i /dice
+            |  is an alias for 
+            i /dice 1d6
+            | .
+          li
+            | Post a link and it will show up in the 
+            i Posted Links
+            |  section. Regular links will become clickable, while Youtube, Vimeo and Soundcloud links will be embedded, so you can play them without leaving Ding. In addition, Instagram links, as well as images are supported. Direct links to common audio files will be embedded in a HTML 5 media player.
+          li
+            | You can change your nick by typing 
+            i /nick newNickName
+            |  Do not specify any nickname to generate a new, random name.
+      p
+        | By default, you are in the lobby, but here are a few other channels for you to try:
+      ul
+        li
+          a(href='/general') General
+        li
+          a(href='/tech') Tech
+        li
+          a(href='/gaming') Gaming
+        li
+          a(href='/books') Books
+        li
+          a(href='/movies') Movies
+        li
+          a(href='/music') Music
+        li
+          a(href='/education') Education
+        li
+          a(href='/vampires') Vampires
+        li
+          a(href='/fashion') Fashion
+        li
+          a(href='/ding') Ding
+      p  Here are some generated channels for you, if you want to chat privately:
+      #PrivateLinks
+    h1 Make a Ding! We&apos;re here to deliver.
+    p
+      | Because everyone&apos;s Ding needs to be heard. Here&apos;s what you need to pay attention to, when Dinging:
+    ol
+      li No language limits.
+      li
+        | Do not give out sensitive information, unless you are absolutely sure that the person you are talking to can be trusted. This includes passwords and credit card numbers.
+      li Do not do anything that you wouldn&apos;t want others to do to you.
+    p
+      | If you would like to help us out with the server costs, you can 
+      a(href='https://www.paypal.me/flameborn/4eur') Pay for a month,
+      |  or 
+      a(href='https://www.paypal.me/flameborn/0eur') Pay any amount you wish
+      |  and make everyone smile! This is optional, but it is greatly appreciated.
+    p We are NOT responsible for your Dings!
+    p Make us proud and have fun!
+    h1 History
+    #history(aria-role='log', aria-live='polite')
+    input(aria-label='Message', autofocus='', style='width:75%')
+    h1 Posted Links
+    #links
+    a(href='https://github.com/Flameborn/ding.ga') Get the source code on Github
+    #mylog
+    script(src='log.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/sono.min.js')
+    script(src='/audio.js')
+    script(src='/ding.js')

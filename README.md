@@ -30,17 +30,23 @@ You will need [Git](https://git-scm.com), and [NodeJS](https://nodejs.org/)
 
 These can be found in most Linux package managers, in [HomeBrew](https://brew.sh) for MacOS, and [MSys2](http://www.msys2.org/) for Windows. With a bit of luck, you can probably install them for the Linux Subsystem under Windows 10 as well.
 
-Three easy steps to go, and you will have your own Ding:
+You will have your own Ding in a few easy steps:
 
 ```
 git clone https://github.com/Flameborn/ding.ga
 
 npm install
 
+npm install pug-cli -g
+
+pug templates --out public
+
 npm start
 ```
 
 The server will be running on port 1844.
+
+After editing the template (.jade files in /templates), you will have to run the _pug_ command again, to recompile (see above). You can do this while the server is running.
 
 # What's changed?
 
