@@ -30,7 +30,7 @@ if (results[1]>1)
 var totalString=" Total: "+total+".";
 if (results[3])
 	totalString=" Modifying it by "+results[3]+", the total is "+total+".";
-if (results[1]==1)
+if (results[1]==1 && !results[3])
 	totalString="";
 return " rolls "+dice+" "+rolls.join(', ')+"."+totalString;
 }
